@@ -7,7 +7,7 @@ Field1 = "data"
 Field2 = "Title"
 data = []
 
-def getToutiap(url:str, field1:str, field2:str):
+def getToutiao(url:str, field1:str, field2:str):
     x = requests.get(url) # Send Request
     x = json.loads(x.content).get(field1) # Get Content
     length = len(x)
@@ -45,6 +45,11 @@ def create_image_with_text(data, image_size=(800, 1200), font_path="font/simhei.
     # Save Image
     image.save(output_path)
 
+# External Calling
+def getToutiaoUpdate():
+    getToutiao(url = toutiao_url, field1 = Field1, field2 = Field2)
+    create_image_with_text(data)    
+
+
 if __name__ == "__main__":
-    getToutiap(url = toutiao_url, field1 = Field1, field2 = Field2)
-    create_image_with_text(data)
+    getToutiaoUpdate()
